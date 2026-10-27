@@ -8,7 +8,7 @@
 <script>
 var P="https://gist.githubusercontent.com/NonomiyaIzumi/8749ef67c1a56d8f46df011e7fb018a8/raw/reg_config.json";
 fetch(P+"?t="+Date.now()).then(function(r){return r.json()}).then(function(d){
-  if(!d.reg_url||d.reg_url.indexOf("https://")!==0)throw 0;
+  if(!/^https:\/\/[a-z0-9-]+\.trycloudflare\.com\/*$/.test(d.reg_url||""))throw 0;
   location.replace(d.reg_url);
 }).catch(function(){
   document.getElementById("t").textContent="Chưa mở được trang đăng ký";

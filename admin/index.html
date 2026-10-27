@@ -9,7 +9,7 @@
 var P="https://gist.githubusercontent.com/NonomiyaIzumi/8c2f7c1feecb64a112e7c6cfa2ce3c4a/raw/backend_config.json";
 fetch(P+"?t="+Date.now()).then(function(r){return r.json()}).then(function(d){
   var u=d.backend_base_url;
-  if(!u||u.indexOf("https://")!==0)throw 0;
+  if(!/^https:\/\/[a-z0-9-]+\.trycloudflare\.com\/*$/.test(u||""))throw 0;
   location.replace(u.replace(/\/+$/,"")+"/admin");
 }).catch(function(){
   document.getElementById("t").textContent="Chưa mở được trang admin";
