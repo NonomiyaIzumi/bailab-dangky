@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin · Business AI Lab</title>
+<style>body{font-family:system-ui,sans-serif;background:#f6f8fb;color:#182433;display:flex;min-height:100vh;align-items:center;justify-content:center;margin:0;text-align:center}
+.b{padding:24px;max-width:420px}img{height:110px;margin-bottom:16px}a{color:#1c2b9a}</style></head>
+<body><div class="b"><img src="../logo.png" alt="Business AI Lab">
+<h2 id="t">Đang chuyển đến trang admin…</h2><p id="m"></p></div>
+<script>
+var P="https://gist.githubusercontent.com/NonomiyaIzumi/8c2f7c1feecb64a112e7c6cfa2ce3c4a/raw/backend_config.json";
+fetch(P+"?t="+Date.now()).then(function(r){return r.json()}).then(function(d){
+  var u=d.backend_base_url;
+  if(!u||u.indexOf("https://")!==0)throw 0;
+  location.replace(u.replace(/\/+$/,"")+"/admin");
+}).catch(function(){
+  document.getElementById("t").textContent="Chưa mở được trang admin";
+  document.getElementById("m").innerHTML="Máy chủ có thể đang khởi động lại. Chờ vài phút rồi <a href=''>thử lại</a>.";
+});
+</script></body></html>
